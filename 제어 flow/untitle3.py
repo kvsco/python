@@ -71,3 +71,27 @@ def sub_num(a, b):
 
 r = add_num(10,20)
 r2 = sub_num(30,20)
+
+# 람다
+l = ['Mon', 'tue', 'weD', 'Thu', 'fri', 'sat', 'SUN']
+def change_words(words, func):
+    for word in words:
+        print(func(word), end=",")
+    print("")
+
+sample_func = lambda x: x.capitalize()
+change_words(l, sample_func)
+
+change_words(l, lambda x: x.capitalize())
+change_words(l, lambda x: x.lower())
+
+# 제너레이터 --> 산출
+g = ['Good morning', 'Good atfernoon', 'Good night']
+
+for i in g:
+    print(i)
+
+print("################")
+
+def greeting():
+    yield 'Good mprning'
