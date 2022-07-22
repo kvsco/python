@@ -93,5 +93,113 @@ for i in g:
 
 print("################")
 
+def counter(num=10):
+    for _ in range(num):
+        yield 'run'
+
 def greeting():
-    yield 'Good mprning'
+    yield 'Good morning'
+    yield 'Good afternoon'
+    yield 'Good night'
+
+# for g in greeting():
+#     print(g)
+gt = greeting()
+c = counter()
+print(next(gt))
+
+print(next(c))
+print(next(gt))
+
+print(next(c))
+print(next(gt))
+
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+
+# list comprehension
+t = (1,2,3,4,5)
+
+r=[]
+for i in t:
+    r.append(i)
+
+print(r)
+r = [i for i in t if i % 2 == 0]  # 메모리, 처리속도가 빠르다는 장점 --> list를 사용하는 짧은 for 문
+print(r)
+
+r = []
+t2 = (5,6,7,8,9,10)
+for i in t:
+    for j in t2:
+        r.append(i*j)
+
+print(r)
+
+r = [i*j for i in t for j in t2]  # 단 2중포문의 경우, 가독성을 위해 그냥 기존 for문으로 작성하는게 보기에 좋다.
+print(r)
+
+# dict 내포
+w = ['mon','tue','wed']
+f = ['cofee','milk','water']
+
+d={x:y for x,y in zip(w,f)}
+print(d)
+
+# 제너레이터 내포
+gre = greeting()
+gre = (i for i in range(10) if i % 2 == 0)  # tuple이 아닌 제너레이터 object 그자체
+print(gre)
+
+for x in gre:
+    print(x)
+
+# 변수 스코프
+animal = 'cat'
+
+def f():
+    global animal
+    print('first : ',animal)
+    animal = 'dog'
+    print('after : ', animal)
+    print('locals : ', locals())  # 지역변수들
+f()
+print('global : ', animal)
+print('globals : ', globals())  # 전역변수들
+print('='*79)
+# error handling
+l = [1,2,3]
+i = 5
+
+try:
+    l[i]
+except IndexError as ie:
+    print('dont-worry : ', ie)
+except NameError as ne:
+    print("error:", ne)
+except Exception as e:
+    print(f'unkwon errer:{e}')
+else:  # except 없이 정상 동작 시
+    print('-done-')
+finally:  #반드시 실행
+    print("clean.")
+print('end prg')
+
+# custom exception
+
+class CustomError(Exception):  # 사용자가 정의하는 예외처리
+    pass
+
+def check():
+    words = ['APPLE', 'orange', 'banana']
+    for word in words:
+        if word.isupper():
+            raise CustomError(word)
+
+check()
