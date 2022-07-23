@@ -1,0 +1,4 @@
+- pycharm 기준 tools -> create setup.py
+- 내가 만든 패키지 폴더에 대한 setup
+- tools -> run setup task -> sdist 배포할 수 있는 파일로 변경
+- 
