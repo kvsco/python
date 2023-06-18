@@ -26,3 +26,10 @@ if __name__ == "__main__":
     print(deck[1])
     print(deck[2])
     print(deck[-1])
+
+    # iteration
+    for card in deck:
+        print(card)
+    print("-"*30)
+    for card in reversed(deck):
+        print(card)
